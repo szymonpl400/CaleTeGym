@@ -50,13 +50,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 			.antMatchers("/registration").permitAll()
 			.antMatchers("/admin/**").hasAnyAuthority("ADMIN").anyRequest()
 			.authenticated().and().csrf().disable().formLogin()
-			.loginPage("/login").failureUrl("/login?error=true")
-			.defaultSuccessUrl("/admin/home")
+			.loginPage("/login")
+			.loginProcessingUrl("/login")
+			.permitAll()
+			.defaultSuccessUrl("/home")
 			.usernameParameter("email")
 			.passwordParameter("password")
 			.and().logout()
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-			.logoutSuccessUrl("/").and().exceptionHandling()
+			.logoutUrl("/logout")
+			.logoutSuccessUrl("/login?logout").and().exceptionHandling()
 			.accessDeniedPage("/access-denied");
 	}
 

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Spring Security Tutorial</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<style>
+		body 
+		{
+			background-color: #202020;
+		}
+		#container
+		{
+			width: 100%; height: 100%;
+		}
+		#friend_list
+		{
+			 position: sticky; left:100%; top:0; width: 250px; height: 100%; text-align: center;
+		}	
+		#table
+		{
+			width: 580px; height: 500px; text-align: center; position:absolute; left:32%;
+		}
+		ul 
+		{
+	 			list-style-type: none;
+		}
+		.dropdown-menu
+		{
+			background-color: #202020; color: white; width:270px;
+		}
+		nav-link dropdown-toggle
+		{
+			color: white;
+		}
+		.nav-pills .show>.nav-link 
+		{
+			background-color: #343a40;
+		}
+		.dropdown-toggle::after 
+		{
+	   		display:none;
+		}
+	</style>
+
+</head>
+
+<body>
+<nav class="navbar navbar-dark bg-dark">
+		<a th:href="@{/home}" class="btn btn-sm btn-dark"><img src="https://img.icons8.com/ultraviolet/25/000000/home-page.png"></a>
+		<a th:href="@{/show_inbox}" class="btn btn-sm btn-dark"><img src="https://img.icons8.com/ultraviolet/25/000000/new-post.png"></a>
+		<a th:href="@{/showMyProfile}" class="btn btn-sm btn-dark"><img src="https://img.icons8.com/ultraviolet/25/000000/gender-neutral-user.png"></a>  <!-- Navbar content -->
+		<ul class="nav nav-pills">	
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="https://img.icons8.com/ultraviolet/25/000000/add-user-group-man-man.png"></a>
+		    <div class="dropdown-menu">
+		    	<table>	    
+					<tr th:each="friendRequest : ${friendRequests}">
+						<td th:text="${friendRequest.getSender().name}+' '+${friendRequest.getSender().lastName+' '}"></td>
+						<td>
+							<a th:href="@{/accept_friend_request(friendRequestId=${friendRequest.id})}" class="btn btn-success btn-sm">Accept</a>
+							<a th:href="@{/discard_friend_request(friendRequestId=${friendRequest.id})}" class="btn btn-danger btn-sm">Discard</a>
+						</td>
+					</tr>
+				</table>
+		    </div>
+		  </li>
+		</ul>
+		
+		<form class="form-inline my-2 my-lg-0" th:action="@{/find_user}">
+	        <input class="form-control mr-sm-2" type="search" placeholder="Search" name="nameAndLastName" id="nameAndLastName">
+	        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+    	</form>
+    	<form th:action="@{/logout}" method="POST">
+			<input type="submit" class="btn btn-danger" value="Logout"/>
+		</form>
+	</nav>
+	<div id="container">
+		<div id="table">
+			<table class="table table-hover table-dark">
+			  <thead>
+			    <tr>
+			      <th scope="col">Profile Photo</th>
+			      <th scope="col">First Name</th>
+			      <th scope="col">Last Name</th>
+			      <th scope="col"></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+				<tr th:each="theUser : ${users}">
+					<td th:text="${theUser.email}"/>
+					<td th:text="${theUser.name}"/>
+					<td th:text="${theUser.lastName}"/>
+					<td>
+						<div class="row controls">
+							<div class="col-sm-6 controls">
+							<a th:href=@{/friend(userId=${theUser.id})} class="btn btn-info btn-sm">View Profile</a>
+							</div>
+							<div th:if="${!user.isFriend(theUser)}" class="col-sm-6 controls">
+							<a  th:href=@{/add_friend(userId=${theUser.id})} class="btn btn-success btn-sm">Add Friend</a>
+							</div>
+						</div>
+					</td>
+				</tr>
+			  </tbody>
+			</table>
+		</div>
+		<div id="friend_list">
+			<table class="table table-borderless table-hover table-dark">
+					<tbody>
+						<tr th:each="theUser : ${friends}">
+							<td th:text="${theUser.name}+' '+${theUser.lastName}"/>
+						</tr>
+					</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

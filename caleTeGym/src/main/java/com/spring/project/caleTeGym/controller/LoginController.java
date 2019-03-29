@@ -1,5 +1,7 @@
 package com.spring.project.caleTeGym.controller;
 
+import java.util.Set;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.project.caleTeGym.entity.FriendRequest;
 import com.spring.project.caleTeGym.entity.User;
 import com.spring.project.caleTeGym.service.UserService;
 
@@ -23,7 +26,8 @@ public class LoginController
 	private UserService userService;
 	
     @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
-    public ModelAndView login(){
+    public ModelAndView login()
+    {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         return modelAndView;
@@ -66,15 +70,20 @@ public class LoginController
 		return modelAndView;
 	}
 	
-	@GetMapping("/admin/home")
+	@GetMapping("/home")
 	public ModelAndView home() 
 	{
-		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject("userMessage", "Welcome" + user.getName() + " " + user.getLastName() + " " + "(" + user.getEmail()+")");
-		modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role ;)");
-		modelAndView.setViewName("admin_home");
+		
+		Set<User> friends = user.getFriends();
+		Set<FriendRequest> friendRequests = user.getInComingFriendRequests();
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.setViewName("home");
+		modelAndView.addObject("friends", friends);
+		modelAndView.addObject("friendRequests", friendRequests);
 		return modelAndView;
 	}
+	
 }
