@@ -48,6 +48,7 @@ public class MailController
 			OutComingMail outComingMail = new OutComingMail();
 			modelAndView.addObject("message", outComingMail);
 			modelAndView.addObject("mail", mail);
+			modelAndView.addObject("user", user);
 			modelAndView.setViewName("reply_page");
 		}
 		else 
@@ -70,6 +71,7 @@ public class MailController
 		{
 			inComingMailService.delete(mailId);
 		}
+		modelAndView.addObject("user", user);
 		modelAndView.setViewName("home");
 
 		return modelAndView;
@@ -87,6 +89,7 @@ public class MailController
 		{
 			outComingMailService.delete(mailId);
 		}
+		modelAndView.addObject("user", user);
 		modelAndView.setViewName("home");
 
 		return modelAndView;
@@ -115,6 +118,50 @@ public class MailController
 		inComingMailService.save(inComingMail);
 		ModelAndView modelAndView = new ModelAndView();
 		System.out.println(outComingMail);
+		modelAndView.addObject("user", user);
+		modelAndView.setViewName("home");
+
+		return modelAndView;
+	}
+	
+	@RequestMapping("/show_message_page")
+	public ModelAndView sendMessage(@RequestParam("userId") int userId) 
+	{
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User sender = userService.findUserByEmail(auth.getName());
+		ModelAndView modelAndView = new ModelAndView();
+		User addressee = userService.getOne(userId);
+		OutComingMail outComingMail = new OutComingMail();
+		
+		modelAndView.addObject("user", sender);
+		modelAndView.addObject("message", outComingMail);
+		modelAndView.addObject("addressee", addressee);
+		modelAndView.addObject("sender", sender);
+		modelAndView.setViewName("sending_page");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value={"/send_message"}, method = RequestMethod.POST)
+	public ModelAndView sendMessage(@Valid OutComingMail outComingMail, BindingResult bindingResult) 
+	{
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByEmail(auth.getName());
+		InComingMail inComingMail = new InComingMail();
+		Date date = new Date();
+		outComingMail.setDate(date);
+		outComingMail.setSender(user);
+		outComingMail.setId(0);
+		
+		inComingMail.setAddressee(outComingMail.getAddressee());
+		inComingMail.setSender(user);
+		inComingMail.setDate(date);
+		inComingMail.setContent(outComingMail.getContent());
+		inComingMail.setTopic(outComingMail.getTopic());
+		
+		outComingMailService.save(outComingMail);
+		inComingMailService.save(inComingMail);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("user", user);
 		modelAndView.setViewName("home");
 
 		return modelAndView;

@@ -1,0 +1,23 @@
+body 
+{
+	background-color: #202020;
+	color: white;
+}
+.h2, h2
+{
+	color: white;
+	align: center;
+}
+.row
+{
+	margin-left: 15px;
+}
+.validation-message
+{
+	color:red;
+}
+#registrationText
+{
+	width: 400px;
+	text-align: center;
+}

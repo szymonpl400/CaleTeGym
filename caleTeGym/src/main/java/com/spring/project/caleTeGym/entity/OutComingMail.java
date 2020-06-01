@@ -34,7 +34,7 @@ public class OutComingMail implements Serializable
 	@Column(name="content")
 	private String content;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="addressee_id", referencedColumnName="id")
 	private User addressee;
 	
@@ -114,9 +114,14 @@ public class OutComingMail implements Serializable
 	}
 
 	@Override
-	public String toString() 
-	{
-		return "InComingMail [id=" + id + ", sender=" + sender + ", topic=" + topic + ", content=" + content
-				+ ", addressee=" + addressee + ", date=" + date + "]";
+	public String toString() {
+		return "OutComingMail [id=" + getId() +
+				", sender=" + sender + 
+				", topic=" + getTopic().toString() +
+				", content=" + getContent().toString() +
+				", addressee=" + getAddressee().toString() +
+				", date=" + getDate().toString() + "]";
 	}
+
+
 }

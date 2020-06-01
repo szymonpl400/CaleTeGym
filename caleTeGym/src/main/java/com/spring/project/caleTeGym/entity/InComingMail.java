@@ -116,7 +116,7 @@ public class InComingMail implements Serializable
 	@Override
 	public String toString() 
 	{
-		return "InComingMail [id=" + id + ", sender=" + sender + ", topic=" + topic + ", content=" + content
-				+ ", addressee=" + addressee + ", date=" + date + "]";
+		return "InComingMail [id=" + getId() + ", sender=" + getSender().toString() + ", topic=" + getTopic() + ", content=" + getContent().toString()
+				+ ", addressee=" + getAddressee().toString() + ", date=" + getDate().toString() + "]";
 	}
 }

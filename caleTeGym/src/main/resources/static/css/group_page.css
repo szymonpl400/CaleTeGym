@@ -1,0 +1,243 @@
+body 
+{
+	background-color: #202020;
+}
+#container
+{
+	width: 100%; height: 100%;
+}
+#friend_list
+{
+	position: fixed; right:0%; top: 6%; width: 250px; height: 100%; text-align: center;
+}	
+ul 
+{
+	list-style-type: none;
+}
+.dropdown-menu
+{
+	background-color: #202020; color: white; width:270px;
+}
+nav-link dropdown-toggle
+{
+	color: white;
+}
+.nav-pills .show>.nav-link 
+{
+	background-color: #343a40;
+}
+.dropdown-toggle::after 
+{
+  		display:none;
+}
+#content
+{
+	background-color: #232322; width:700px; left: 30%; top: 6%; position: absolute;
+}
+.sticky 
+{
+ 	 position: fixed;
+	 top: 0;
+	 width: 100%;
+}
+.sticky + .content 
+{
+	  padding-top: 60px;
+}
+#navbar
+{
+	position:fixed;  
+	z-index:1; 
+	width:100%;
+}
+#left_nav
+{
+	width: 250px; height: 600px; position: fixed; left: 17%; top: 7%;  color: white;
+}
+a:not([href]):not([tabindex]) 
+{
+	color: white;
+}
+#create_group_menu
+{
+	position: relative; left: 40%;
+}
+#left_table_menu
+{
+background-color: #202020; color: white;
+}
+#group_list
+{
+	overflow-wrap: break-word;	
+}
+#groups
+{
+	width: 145px;
+	position: fixed;
+	left: 21%;
+	top: 13%;
+}
+#header
+{
+	left: 40%;
+	position: relative;
+}
+a, a:hover
+{
+	color: white; text-decoration: none;	
+}
+#group_picture
+{
+	position: relative; width:700px; left:0%; top:0%; height: 200px; background-color: black;
+}
+#group_name
+{
+	position: relative; width:200px; left:5%; top:0%; height: 50px; color: white; font-size: 30px; font-family: Calibri;
+}
+#add_new_member
+{
+	color: gold;
+}
+.post
+{
+	position: relative; width: 90%;  margin-top: 2%; margin-left: 2%; margin-right: 5%; margin-bottom: 3%; overflow: auto; color: white; overflow-y: hidden;
+}
+.post_content
+{
+	position: relative; word-wrap: break-word;
+}
+.post_frame
+{
+	position: relative; width: 100%; height: 150px; background-color: #262626; overflow: auto; border: 2px groove #262626; color: white; overflow-y: hidden;
+}
+.likes
+{
+	position: relative; margin-left: 0%; width: 100%; height: 15%; margin-top: 1%;
+}
+.post_user_info
+{
+	position: relative; margin-left: 0%; width: 100%; height: 20%; margin-bottom: 1%;
+}
+.post_owner_photo
+{
+	position: relative; margin-left: 1%; width: 10%; height: 100%; background-color: #262626; border-radius: 50%; border: 1px groove #262626;
+}
+.post_owner_name_lastname
+{
+	position: relative; margin-left: 13%; width: 85%; height: 100%; bottom: 100%;
+}
+.name_lastname_span
+{
+	position: relative; margin-top: 5%; top: 35%; font-size: 17px;
+}
+.post_actions
+{
+	position: relative; margin-left: 2%; height: 100%; cursor: pointer;
+}
+		
+.heart
+{
+    content:url("https://img.icons8.com/color/25/000000/filled-like.png");
+}
+
+.heart_white
+{
+  	content:url("https://img.icons8.com/ios/25/000000/like.png");
+}
+.card-body
+{
+	background-color: #202020; width: 35rem;resize: horizontal; overflow: auto;
+}
+#collapseExample
+{
+	height: 300px; width: 300px;
+}
+.collapseExample.collapse.show
+{
+	height: 700px; width: 300px;
+}
+.new_comment{
+	position: relative;
+	width:100%;
+	background-color: #262626;
+	border: 2px groove #262626;
+	color: white;
+	overflow: auto;
+	border-radius: 2%;
+	margin-top: 2%;
+}
+.new_comment_button{
+	float: right;
+	margin-right:2%;
+}
+
+.heart:hover {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.5s;
+
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+.commentList{
+	padding-left: 5%
+}
+.comment_frame
+{
+	position: relative; width: 90%; height: 100px; background-color: #262626; overflow: auto; border: 2px groove #262626; color: white; overflow-y: auto;
+}
+.commentElements{
+	margin-top: 5%; margin-bottom: 10%;
+}
+.comment_content
+{
+	position: relative; word-wrap: break-word;
+}
+.comment_owner_name_lastname
+{
+	position: relative; margin-left: 13%; width: 76%; height: 100%; bottom: 100%;
+}
+.comment_owner_photo
+{
+	position: relative; margin-left: 1%; width: 10%; height: 100%; background-color: #262626; border-radius: 50%; border: 1px groove #262626;
+}
+.postElements{
+	margin-bottom: 10%;
+}
+.postDate{
+	font-size: 11px;
+	float: right;
+}
+img{    
+	max-width: 100%;
+    height: auto;
+}
+#postUserPhoto{
+	border-radius: 50%;	
+	max-width: 100%;
+    height: auto;
+}
+.posts{
+	background-color: #232322;
+}
+
+
+
+
+
+
+
+

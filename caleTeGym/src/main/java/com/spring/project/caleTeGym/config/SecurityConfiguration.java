@@ -51,6 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 			.antMatchers("/admin/**").hasAnyAuthority("ADMIN").anyRequest()
 			.authenticated().and().csrf().disable().formLogin()
 			.loginPage("/login")
+			.failureUrl("/login-error.html")
 			.loginProcessingUrl("/login")
 			.permitAll()
 			.defaultSuccessUrl("/home")
@@ -68,7 +69,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter
 	{
 		web
 			.ignoring()
-			.antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
+			.antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/json/**","/jquery/**");
 	}
 	
 }

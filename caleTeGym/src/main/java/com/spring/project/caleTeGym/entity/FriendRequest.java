@@ -81,5 +81,14 @@ public class FriendRequest
 	{
 		this.date = date;
 	}
+
+	@Override
+	public String toString() {
+		return "FriendRequest [id=" + getId() +
+				", sender=" + getSender().toString() +
+				", addressee=" + getAddressee().toString() +
+				", date=" + getDate().toString() + "]";
+	}
+	
 	
 }
