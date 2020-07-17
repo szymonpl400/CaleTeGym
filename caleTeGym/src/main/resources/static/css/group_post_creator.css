@@ -112,7 +112,16 @@ a, a:hover
 }
 #post_contetnt
 {
-	overflow: auto; resize: vertical; border-radius: 2%; width: 90%; height: 100px; margin-left: 5%; margin-right: 5%; margin-top: 2%;
+	overflow: auto;
+	resize: vertical;
+	border-radius: 2%;
+	width: 90%;
+	height: 100px;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 2%;
+	background-color: #202020;
+    color: white;
 }
   		
   		

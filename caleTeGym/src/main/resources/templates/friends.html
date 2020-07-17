@@ -78,7 +78,7 @@
 		  </thead>
 				<tbody>
 					<tr th:each="theUser : ${users}">
-						<td><div id="profilePhoto"><img th:src="${theUser.getPhoto()}" class="img-responsive center-block" id="postUserPhoto"/></div></td>
+						<td><div id="profilePhoto"></div></td>
 						<td th:text="${theUser.name}"/>
 						<td th:text="${theUser.lastName}"/>
 						<td>

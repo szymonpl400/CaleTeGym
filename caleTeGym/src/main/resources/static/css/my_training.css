@@ -63,10 +63,11 @@ nav-link dropdown-toggle
 	display:none;
 }
 
-#diet{
+#training_container{
 	position: relative;
     width: 100%;
     height: 89%;
+	background-color: #232322;
     left: 0%;
     top: 5%;
     content: "";
@@ -109,7 +110,74 @@ nav-link dropdown-toggle
 .products_image img {
     max-width: 100%;
     height: auto;
-}	
+}
+#training_list{
+	width: 100%;
+	position: relative;
+    margin-top: 1%;
+}
+.exercise{
+	position: relative;
+    width: 98%;
+    height: 40%;
+    background-color: #202020;
+    border: 2px groove #262626;
+    margin-top: 1%;
+    margin-left: 1%;
+    color: white;
+    max-height: 356px;
+}
+.exerciseName{
+	position: relative;
+    width: 30%;
+    height: 6%;
+    background-color: #202020;
+    margin-top: 1%;
+    margin-left: 2%;
+    float: left;
+    text-align: center;
+    font-size: 20px;
+}
+.exerciseNote{	
+	position: relative;
+    width: 30%;
+    height: 73%;
+    background-color: #232322;
+    border: 2px groove #262626;
+    margin-top: 3%;
+    margin-left: 2%;
+    white-space: pre-line;
+    max-height: 256px;
+}
+.seriesContainer{
+	position: relative;
+    width: 62%;
+    height: 89%;
+    background-color: #232322;
+    border: 2px groove #262626;
+    bottom: 87%;
+    margin-right: 2%;
+	margin-top: 1%;
+    float: right;
+    overflow-y: auto;
+    max-height: 313px;
+}
+.series{
+	position: relative;
+    width: 98%;
+    height: 13%;
+    background-color: #202020;
+    border: 2px groove #262626;
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
+::-webkit-scrollbar { width: 8px; height: 3px;}
+::-webkit-scrollbar-track {  background-color: #646464;}
+::-webkit-scrollbar-track-piece { background-color: #000;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px;}
+::-webkit-scrollbar-corner { background-color: #646464;}}
+::-webkit-resizer { background-color: #666;}
 	
 	
 	

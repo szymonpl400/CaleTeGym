@@ -25,6 +25,7 @@ $pupilList.on('click', function(e){
 	name = $el.data('name');
 	lastname = $el.data('lastname');
 	userPhoto = $el.data('photo');
+	$('#left_side_menu').removeClass('hide');
 	if($('#right_side_menu')){
 		$('#right_side_menu').remove();
 	}	

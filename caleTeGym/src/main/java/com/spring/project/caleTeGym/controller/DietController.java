@@ -455,8 +455,7 @@ public class DietController {
 	 }
 	 
 	 public boolean isTheSameDate(Date date, Date date2) {
-		 
-		 
+		  
 		 Calendar calendar = Calendar.getInstance();
 		 calendar.setTime(date);
 		 int dateYear = calendar.get(Calendar.YEAR);

@@ -1,4 +1,4 @@
-body{
+vbody{
 	background-color: #202020;
 }
 #container
@@ -210,6 +210,14 @@ img{
 	max-width: 100%;
     height: auto;
     image-orientation: from-image;
+}
+#content {
+    background-color: #202020;
+    color: white;
+}
+body{
+    background-color: #202020;
+    color: white;
 }
 
 

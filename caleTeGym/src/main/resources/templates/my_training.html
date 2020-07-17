@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Group members page</title>
+	<title></title>
 </head>
 
 <body>
@@ -66,89 +66,55 @@
 			</form>
 		</nav>
 	</div>
-	<div id="container">
-	<div id="left_nav">
-		<a th:href=@{/show_group_form} type="button" class="btn btn-dark" id="create_group_menu">Create Group</a> 
-		<div id="groups">
-			<span id="header">Groups</span>
-			<ul id="group_list" th:each="group : ${groups}">
-			  <li><img src="https://img.icons8.com/ultraviolet/20/000000/groups.png"><a th:text= ${group.getName()} th:href=@{/show_group_page(groupId=${group.id})}></a></li>
-			</ul>
-		</div> 
-	</div>
 	<div id="content">
-		<div id="group_picture"></div>
-		<div id="group_name" th:text="${group.getName()}"></div>
-		<div id="group_nav_bar">
-			<nav class="navbar navbar-dark bg-dark">
-				<div>
-					<a th:href="@{/show_group_members(groupId=${group.getId()})}" class="btn btn-sm btn-dark">Show Members</a>
+		<div id="left_side_menu">
+			<div class="list-group">
+				<div th:if="${user.getType() == 'pupil'}">
+					<a th:href="@{/show_my_diet}" class="list-group-item list-group-item-action list-group-item"><img src="https://img.icons8.com/clouds/50/000000/plate-1.png"/>Diet</a>
 				</div>
-				<div>
-					<a th:href="@{/home}" class="btn btn-sm btn-dark">Show Posts</a>
+				<div th:if="${user.getType() == 'trainer'}">
+					<a th:href="@{/writeDiet}" class="list-group-item list-group-item-action list-group-item"><img src="https://img.icons8.com/clouds/50/000000/plate-1.png"/>Write Diet</a>
 				</div>
-				<div>
-					<a th:href="@{/home}" class="btn btn-sm btn-dark">Show Photos</a>
-				</div>
-				<div th:if="${group.isOwner(user)}">
-					<a th:href="@{/show_new_member_form(groupId=${group.getId()})}" class="btn btn-sm btn-dark" id="add_new_member">Add New Member</a>
-				</div>
-			</nav>
+				<a th:href="@{/show_my_diet}" class="list-group-item list-group-item-action list-group-item"><img src="https://img.icons8.com/clouds/50/000000/overtime.png"/>Schedule</a>
+				<a href="#" class="list-group-item list-group-item-action list-group-item"><img src="https://img.icons8.com/clouds/50/000000/stack-of-photos.png"/>Gallery</a>
+				<a th:href="@{/show_group_of_friends}"class="list-group-item list-group-item-action list-group-item"><img src="https://img.icons8.com/clouds/50/000000/conference-call.png"/>Friends</a>
+				<a href="#" class="list-group-item list-group-item-action list-group-item"><img src="https://img.icons8.com/clouds/50/000000/long-arrow-up.png"/>Increases</a>
+				<a href="#" class="list-group-item list-group-item-action list-group-item"><img src="https://img.icons8.com/clouds/50/000000/darts.png"/>Targets</a>
+			</div>
 		</div>
-		<div id="members_table">
-			<table class="table table-hover table-dark">
-				<thead>
-					<tr>
-						<th scope="col">Profile Photo</th>
-						<th scope="col">First Name</th>
-						<th scope="col">Last Name</th>
-						<th scope="col"></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="theUser : ${members}">
-						<td><div class="profilePhoto"><img th:src="${theUser.getPhoto()}" class="img-responsive center-block" id="postUserPhoto"/></div></td>
-						<td th:text="${theUser.name}" th:if="${!theUser.isOwner(group,theUser)}"/>
-						<td th:text="${theUser.name}" th:if="${theUser.isOwner(group,theUser)}" style="color:gold"/>
-						<td th:text="${theUser.lastName}" th:if="${theUser.isOwner(group,theUser)}" style="color:gold" />
-						<td th:text="${theUser.lastName}" th:if="${!theUser.isOwner(group,theUser)}"/>
-						<td>
-						<div class="row controls">
-							<div class="col-sm-6 controls">
-								<a th:href=@{/friend(userId=${theUser.id})} class="btn btn-info btn-sm">View Profile</a>
-							</div>
-							<div class="col-sm-6 controls" th:if="${!user.isFriend(theUser)&&!user.equals(theUser)}">
-								<a th:href=@{/add_friend(userId=${theUser.id})} class="btn btn-success btn-sm">Add Friend</a>
-							</div>
-						</div>
-						</td>
-					</tr>
-				</tbody>
-			</table>		
+		<div id="container">
+			<div id="date_text">
+				<span>Date:</span>
+			</div>
+			<input type='date' class="form-control" id='date' placeholder="Date"/>
+			<select class="form-control hide" id="training_list">
+			</select>
+			<div id="training_container">
+<!-- 				<div class="exercise">
+					<div class="exerciseName">aaa</div></br>
+					<div class="exerciseNote"></div>
+					<div class="seriesContainer">
+						<div class="series"></div>
+						<div class="series"></div>
+					</div>
+				</div>
+				<div class="exercise">
+					<div class="exerciseName">aaa</div></br>
+					<div class="exerciseNote"></div>
+					<div class="seriesContainer">
+						<div class="series"></div>
+						<div class="series"></div>
+					</div>
+				</div> -->
+			</div>
 		</div>
 	</div>
-		<div id="friend_list">
-			<table class="table table-borderless table-hover table-dark">
-					<tbody>
-						<tr th:each="theUser : ${friends}">
-							<td th:text="${theUser.name}+' '+${theUser.lastName}"/>
-							<td>
-								<a th:href=@{/show_message_page(userId=${theUser.id})} class="btn btn-success btn-sm">Reply</a>
-							</td>
-						</tr>
-					</tbody>
-			</table>
-		</div>
-	</div>
-	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/group_members_page.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/my_training.css}" />
 	<script th:src="@{/jq/jquery-3.4.1.js}"></script>
-	<script th:src="@{/js/group_members_page.js}"></script>
-	
+	<script th:src="@{/js/my_training.js}"></script>
 </body>
-
 </html>

@@ -76,7 +76,7 @@
 					<a th:href="@{/writeDiet}" class="list-group-item list-group-item-action list-group-item"><img src="https://img.icons8.com/clouds/50/000000/plate-1.png"/>Write Diet</a>
 				</div>
 				<div th:if="${user.getType() == 'pupil'}">
-					<a th:href="@{/show_my_diet}" class="list-group-item list-group-item-action list-group-item"><img src="https://img.icons8.com/clouds/50/000000/dumbbell.png"/>Training</a>
+					<a th:href="@{/show_my_training}" class="list-group-item list-group-item-action list-group-item"><img src="https://img.icons8.com/clouds/50/000000/dumbbell.png"/>Training</a>
 				</div>
 				<div th:if="${user.getType() == 'trainer'}">
 					<a th:href="@{/writeTraining}" class="list-group-item list-group-item-action list-group-item"><img src="https://img.icons8.com/clouds/50/000000/dumbbell.png"/>Write Training</a>

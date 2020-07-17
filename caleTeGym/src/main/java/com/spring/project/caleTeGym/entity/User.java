@@ -150,37 +150,65 @@ public class User implements Serializable
 	@ManyToMany
 	@JoinTable(name = "user_completed_target", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "completed_target_id"))
 	private List<Target> completedTargets;
+	
+	@ManyToMany
+	@JoinTable(name = "user_training", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "training_id"))
+	private List<Training> trainings;
 
 	
 	public User() 
 	{}
 
+
+
 	public User(int id,
 			@Email(message = "Please provide a valid Email") @NotEmpty(message = "Please provide an email") String email,
-			@NotEmpty(message = "Please provide your password") @Length(min = 5, message = "*Your password ,ust have at least 5 characters") String password,
+			@NotEmpty(message = "Please provide your password") @Length(min = 5, message = "*Your password must have at least 5 characters") String password,
 			@NotEmpty(message = "*Please provide your name") String name,
-			@NotEmpty(message = "*Please provide your last name") String lastName,
-			@NotEmpty(message = "*Please choose one") String type,
-			int active, Set<Role> roles,
-			Set<User> friends, Set<InComingMail> inComingMails, Set<OutComingMail> outComingMails,
-			Set<FriendRequest> inComingFriendRequests, Set<FriendRequest> outComingFriendRequests, List<Group> groups, List<TrainerRequest> trainerRequest) {
-
+			@NotEmpty(message = "*Please provide your last name") String lastName, String type, String sex,
+			String photo, int active, int age, float weight, float growth, float bmi, float caloricDemand,
+			Set<Role> roles, Set<User> friends, Set<InComingMail> inComingMails, Set<OutComingMail> outComingMails,
+			Set<FriendRequest> inComingFriendRequests, Set<FriendRequest> outComingFriendRequests,
+			List<GroupRequest> groupRequests, List<TrainerRequest> trainerRequests, List<Group> groups,
+			List<User> trainers, List<User> pupils, List<Meal> breakfast, List<Meal> secondBreakfast, List<Meal> dinner,
+			List<Meal> tea, List<Meal> supper, List<Event> events, List<Target> remainingTargets,
+			List<Target> completedTargets, List<Training> trainings) {
 		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.name = name;
 		this.lastName = lastName;
 		this.type = type;
+		this.sex = sex;
+		this.photo = photo;
 		this.active = active;
+		this.age = age;
+		this.weight = weight;
+		this.growth = growth;
+		this.bmi = bmi;
+		this.caloricDemand = caloricDemand;
 		this.roles = roles;
 		this.friends = friends;
 		this.inComingMails = inComingMails;
 		this.outComingMails = outComingMails;
 		this.inComingFriendRequests = inComingFriendRequests;
 		this.outComingFriendRequests = outComingFriendRequests;
+		this.groupRequests = groupRequests;
+		this.trainerRequests = trainerRequests;
 		this.groups = groups;
-		this.trainerRequests = trainerRequest;
+		this.trainers = trainers;
+		this.pupils = pupils;
+		this.breakfast = breakfast;
+		this.secondBreakfast = secondBreakfast;
+		this.dinner = dinner;
+		this.tea = tea;
+		this.supper = supper;
+		this.events = events;
+		this.remainingTargets = remainingTargets;
+		this.completedTargets = completedTargets;
+		this.trainings = trainings;
 	}
+
 
 
 	public int getAge() {
@@ -427,8 +455,6 @@ public class User implements Serializable
 	public void setPupils(List<User> pupils) {
 		this.pupils = pupils;
 	}
-	
-	
 
 	public List<Meal> getBreakfast() {
 		return breakfast;
@@ -494,6 +520,14 @@ public class User implements Serializable
 		this.completedTargets = completedTargets;
 	}
 
+	public List<Training> getTrainings() {
+		return trainings;
+	}
+
+	public void setTrainings(List<Training> trainings) {
+		this.trainings = trainings;
+	}
+
 	public void deleteFriendRequest(FriendRequest friendRequest) 
 	{
 		this.inComingFriendRequests.remove(friendRequest);
@@ -513,6 +547,7 @@ public class User implements Serializable
 	{
 		return group.getMembers().contains(user);
 	}
+	
 	public boolean isOwner(Group group, User user) 
 	{
 		return group.getOwner().equals(user);

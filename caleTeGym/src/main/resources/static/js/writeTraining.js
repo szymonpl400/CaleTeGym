@@ -1,17 +1,19 @@
+var date;
+var pupil;
 
 $('.pupil_list').on('click', function(e){
 	var $el = $(e.target);
-	
+	pupil = $el.data("id");
 	if($('#date').val()){
 		$('#date_text').remove();
 		$('#choose_user').remove();
 		$('#date').addClass('hide');
 		$('.alert-danger').remove();
 		date = $('#date').val();
-		$('#container').append('<ul class="list-group body_list"><li class="list-group-item">Chest</li><li class="list-group-item">Forearms</li><li class="list-group-item">Lats</li><li class="list-group-item">Middle Back</li><li class="list-group-item">Lower Back</li><li class="list-group-item">Neck</li><li class="list-group-item">Quadriceps</li><li class="list-group-item">Hamstrings</li><li class="list-group-item">Calves</li><li class="list-group-item">Triceps</li><li class="list-group-item">Traps</li><li class="list-group-item">Shoulders</li><li class="list-group-item">Abdominals</li><li class="list-group-item">Glutes</li><li class="list-group-item">Biceps</li><li class="list-group-item">Adductors</li><li class="list-group-item">Abductors</li></ul>');
+		$('#content').append('<div id="left_side_menu"><ul class="list-group body_list"><li class="list-group-item">Chest</li><li class="list-group-item">Forearms</li><li class="list-group-item">Lats</li><li class="list-group-item">Middle Back</li><li class="list-group-item">Lower Back</li><li class="list-group-item">Neck</li><li class="list-group-item">Quadriceps</li><li class="list-group-item">Hamstrings</li><li class="list-group-item">Calves</li><li class="list-group-item">Triceps</li><li class="list-group-item">Traps</li><li class="list-group-item">Shoulders</li><li class="list-group-item">Abdominals</li><li class="list-group-item">Glutes</li><li class="list-group-item">Biceps</li><li class="list-group-item">Adductors</li><li class="list-group-item">Abductors</li></ul><div>');
 		
 	} else {
-			$('#container').prepend('<div class="alert alert-danger" role="alert">Please choose date.</div>');
+			$('#content').prepend('<div class="alert alert-danger" role="alert">Please choose date.</div>');
 	}
 });
 
@@ -93,13 +95,111 @@ $('body').on('click', '.body_list', function(e){
 
 $('body').on('change', '#excercise_list', function(e){
 	var $el = $(e.target);
-	console.log($el);
 	$('#series_text').removeClass('hide');
 	$('#series_list').removeClass('hide');
+
 });
+var noteText = "";
+$('body').on('keypress', '#note_text', function(e){
+	var asciiLetter = e.keyCode;
+	if(asciiLetter == 13){
+		noteText += "/n"
+	}else{
+		noteText += String.fromCharCode(e.keyCode);
+	}
+});
+
+var number_of_series;
 
 $('body').on('change', '#series_list', function(e){
 	var $el = $(e.target);
-	console.log($el.val());
+	var $series_details = $('#series_details');
+	number_of_series = $el.val();
+	$series_details.empty();
+	for(var i=0; i < number_of_series; i++){
+		$series_details.append('<div class="series_info"><div class="reps_text"><label class="reps">Reps:</label></div><select class="form-control reps_list" id="reps_list'+ i +'"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option></select><div class="weight">Weight:</div></br><div class="form-group"><input type="number" id="weight'+ i +'" max=350 min=0 value=0 class="form-control weights"/></div></br><div class="time_text"><span>Time:</span></div></br><div class="time_div"><input type="number" id="time'+ i +'" max=350 min=0 value=0 class="form-control times"/></div></div>')
+	}
 	$('#series_details').removeClass('hide');
-})
+	$('#note').removeClass('hide');
+	$('#div_with_actions').removeClass('hide');
+	$('#added_exercises_box').removeClass('hide');
+	$('#added_exercises_div').removeClass('hide');
+	$('#added_exercises_span').removeClass('hide');
+});
+
+
+var exercises = [];
+
+$('body').on('click', '#save_exercise', function(e){
+	var note = noteText;
+	noteText = "";
+	var sets = [];
+	for(var i=0; i < number_of_series; i++){
+		var reps = $('#reps_list'+ i).val();
+		var weight = $('#weight' + i).val();
+		var time = $('#time' + i).val();
+		var set = {
+				reps: reps,
+				weight: weight,
+				time: time
+		}
+		sets.push(set);
+	}	
+	var Exercise = {
+		sets: sets,
+		name: $('#excercise_list').val(),
+		note: note
+	};
+	$('#added_exercises_div').append('<div class="added_exercise"><span class="exercise_name">' + $("#excercise_list").val() + ' | Series: '+ number_of_series +'</span></div>');
+	exercises.push(Exercise);
+	$('#series_details').addClass('hide');
+	$('#note_text').val('');
+	$('#note').addClass('hide');
+	$('#div_with_actions').addClass('hide');
+	$('#series_text').addClass('hide');
+	$('#series_list').addClass('hide');
+});		
+
+
+$('body').on('click', '#save_training', function(e){
+	var Training = {
+		pupil: pupil,
+		date: date,
+		exercises: exercises
+	}
+	
+	console.log(Training);
+	
+	$.ajax({
+ 		type: "POST",
+ 		url: 'create_training',
+ 		timeout: 5000,
+ 		contentType : 'application/json',
+ 		data: JSON.stringify(Training),
+        success: function () {
+        	console.log('success');
+        },
+ 		fail: function(){
+ 			console.log("fail");
+ 		},
+ 		error: function(e){
+ 			console.log(e);
+ 		}
+ 	});
+	
+});	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
