@@ -1,0 +1,93 @@
+body 
+{
+	background-color: #202020;
+}
+#container
+{
+	width: 100%; height: 100%;
+}
+#friend_list
+{
+	position: fixed; right:0%; top: 6%; width: 250px; height: 100%; text-align: center;
+}	
+ul 
+{
+	list-style-type: none;
+}
+.dropdown-menu
+{
+	background-color: #202020; color: white; width:270px;
+}
+nav-link dropdown-toggle
+{
+	color: white;
+}
+.nav-pills .show>.nav-link 
+{
+	background-color: #343a40;
+}
+.dropdown-toggle::after 
+{
+	display:none;
+}
+#content
+{
+	background-color: #232322; width:700px; height: 1500px; left: 30%; top: 6%; position: absolute;
+}
+.sticky 
+{
+	position: fixed;
+  	top: 0;
+  	width: 100%;
+}
+.sticky + .content 
+{
+	padding-top: 60px;
+}
+#navbar
+{
+	position:fixed;  
+	z-index:1; 
+	width:100%;
+}
+#left_nav
+{
+	width: 250px; height: 600px; position: fixed; left: 17%; top: 7%; 
+}
+a:not([href]):not([tabindex]) 
+{
+	color: white;
+}
+#left_menu
+{
+	position: relative; left: 100%;
+}
+#left_table_menu
+{
+	background-color: #202020; color: white;
+}
+#name_input
+{
+	position: absolute; top: 5%; left: 10%; width: 35%;
+}
+#create_button
+{
+	position: absolute; top:5%; left: 50%; width: 20%;
+}
+  		
+label
+{
+	color: white;
+}
+#check_boxes
+{
+	top:13%; left: 14%; position: absolute;
+}
+#form
+{
+	position: absolute; top: 8%; left: 10%; width: 100%; height: 40%;
+}
+  		
+  		
+  		
+  		

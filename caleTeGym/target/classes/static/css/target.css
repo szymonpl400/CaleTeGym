@@ -1,0 +1,156 @@
+body{
+	background-color: #202020;
+}
+#container
+{
+	background-color: #232322; position: relative; left: 30%; top: 6%; width: 700px; height: 1000px;
+} 
+ul 
+{
+	list-style-type: none;
+}
+.dropdown-menu
+{
+	background-color: #202020; color: white; width:270px;
+}
+nav-link dropdown-toggle
+{
+	color: white;
+}
+.nav-pills .show>.nav-link 
+{
+	background-color: #343a40;
+}
+.dropdown-toggle::after 
+{
+	display:none;
+}
+#left_side_menu{
+	background-color: #232322; position: absolute; left: 19%; top: 24%; width: 210px; height: 400px; margin-top: 2%; margin-bottom: 2%;
+}
+.list-group-item{
+	color: white; background-color: #222425; position: relative;
+}
+#content{
+	background-color: #202020; color: white;
+}	
+.form-group{
+	width: 200px; position: relative; left: 25%;
+}
+
+.btn-block{
+	position: relative;
+    display: table-row-group;
+    width: 70%;
+    left: 16%;
+    margin-top: 10%;
+}
+.low_opacity{
+	opacity: 0.05;
+}
+#target_form{
+    width: 400px;
+    height: 450px;
+    position: absolute;
+    left: 39%;
+    top: 20%;
+    border: 2px groove #262626;
+    background-color: #262626;
+    display: none;
+}	
+.hide{
+	display:none;
+}
+.check-label{
+	color: white;
+}
+.x {
+	position: relative;
+	width: 27px;
+	height: 27px;
+	border: 2px solid #eef5df;
+	background-color: #ff5248;
+	border-radius: 50%;
+	left: 96%;
+    top: -3%;
+	}
+.x::before, .x::after {
+	position: absolute;
+	top: 10px;
+	left: 5px;
+	width: 13px;
+	height: 3px;
+	content: "";
+	background-color: #eef5df;
+	display: none;
+	}
+.x::before {
+	-ms-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	}
+.x::after {
+	-ms-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	}
+.x:hover { cursor: pointer; }
+.x:hover::before, .x:hover::after { display: block; }
+
+#target_actions{
+	position: relative;
+    left: 13%;
+    top: 5%;
+}
+#targetInfoText{
+	text-align: center;
+	color:white;
+}
+#target_content_div{
+	left: 6%;
+    width: 89%;
+}
+#target_content{
+	background-color: #202020;
+	color: white;
+}
+#content_error{
+	color:red;
+}
+.targets{
+    position: relative;
+    width: 100%;
+    height: 86%;
+    top: 10%;
+}
+.target{
+	top: 5%;
+	position: relative;
+    left: 14%;
+    width: 70%;
+    height: 20%;
+    margin-top: 5%;
+    border: 2px groove #262626;
+    background-color: #262626;
+    overflow: overlay;
+}
+#no_targets_alert{
+    top: 9%;
+    position: relative;
+    left: 0%;
+    width: 61%;
+    height: 3%;
+    margin-top: 2%;
+    text-align: right;
+}
+.target_action{
+	position: relative;
+    width: 14%;
+    height: 5%;
+    left: 70%;
+    top: 6%;
+}
+
+
+		
+		

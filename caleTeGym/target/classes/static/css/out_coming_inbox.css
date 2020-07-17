@@ -1,0 +1,48 @@
+#table
+{
+	width: 600px; height: 500px; text-align: center; position: absolute; left: 30%; top: 55px;
+}
+body 
+{
+	background-color: #202020;
+}
+#container
+{
+	width: 100%; height: 100%;
+}
+#friend_list
+{
+	position: fixed; right:0%; top: 6%; width: 250px; height: 100%; text-align: center;
+}
+#in_coming_or_out_coming
+{
+	width: 200px; height: 200px; text-align: center; position: absolute; left: 20%; top: 6%;
+}
+.btn-secondary 
+{
+	background-color: #343a40; border: none; border-radius: 0%;
+}
+.btn-group-vertical
+{
+	left:36px; bottom:3px;
+}
+ul 
+{
+	list-style-type: none;
+}
+.dropdown-menu
+{
+	background-color: #202020; color: white; width:270px;
+}
+nav-link dropdown-toggle
+{
+	color: white;
+}
+.nav-pills .show>.nav-link 
+{
+	background-color: #343a40;
+}
+.dropdown-toggle::after 
+{
+	display:none;
+}

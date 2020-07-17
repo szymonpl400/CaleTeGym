@@ -1,0 +1,122 @@
+body 
+{
+	background-color: #202020;
+}
+#container
+{
+	width: 100%; height: 100%;
+}
+#friend_list
+{
+	position: fixed; right:0%; top: 6%; width: 250px; height: 100%; text-align: center;
+}	
+ul 
+{
+	list-style-type: none;
+}
+.dropdown-menu
+{
+	background-color: #202020; color: white; width:270px;
+}
+nav-link dropdown-toggle
+{
+	color: white;
+}
+.nav-pills .show>.nav-link 
+{
+	background-color: #343a40;
+}
+.dropdown-toggle::after 
+{
+	display:none;
+}
+#content
+{
+	background-color: #232322; width:700px; height: 1500px; left: 30%; top: 6%; position: absolute;
+}
+.sticky 
+{
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+.sticky + .content 
+{
+	padding-top: 60px;
+}
+#navbar
+{
+	position:fixed;  
+	z-index:1; 
+	width:100%;
+}	
+#left_nav
+{
+	width: 250px; height: 600px; position: fixed; left: 17%; top: 7%;  color: white;
+}
+a:not([href]):not([tabindex]) 
+{
+	color: white;
+}
+#create_group_menu
+{
+	position: relative; left: 40%;
+}
+#left_table_menu
+{
+	background-color: #202020; color: white;
+}
+#group_list
+{
+	overflow-wrap: break-word;	
+}
+#groups
+{
+	width: 145px;
+	position: fixed;
+	left: 21%;
+	top: 13%;
+}
+#header
+{
+	left: 40%;
+	position: relative;
+}
+a, a:hover
+{
+	color: white; text-decoration: none;	
+}
+#group_picture
+{
+	position: relative; width:700px; left:0%; top:0%; height: 200px; background-color: black;
+}
+#group_name
+{
+	position: relative; width:200px; left:5%; top:0%; height: 50px; color: white; font-size: 30px; font-family: Calibri;
+}
+#add_new_member
+{
+	color: gold;
+}
+#members_table
+{
+	position: relative; width: 100%; height: 100%; left: 0%; top: 0%;
+}
+.profilePhoto{
+	background-color: #262626;
+    position: relative;
+    width: 65px;
+    height: 170px;
+    left: 1%;
+    top: 1%;
+    border-radius: 0%;
+    border: 2px groove #262626;
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+#postUserPhoto{
+	max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}

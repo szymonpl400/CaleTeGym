@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Spring Security Tutorial</title>
+	<link rel="shortcut icon" href="">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+</head>
+
+<body>
+	<div id="navbar">
+	<nav class="navbar navbar-dark bg-dark">
+		<a th:href="@{/home}" class="btn btn-sm btn-dark"><img src="https://img.icons8.com/ultraviolet/25/000000/home-page.png"></a>
+		<a th:href="@{/show_inbox}" class="btn btn-sm btn-dark"><img src="https://img.icons8.com/ultraviolet/25/000000/new-post.png"></a>
+		<a th:href="@{/showMyProfile}" class="btn btn-sm btn-dark"><img src="https://img.icons8.com/ultraviolet/25/000000/gender-neutral-user.png"></a>
+		<ul class="nav nav-pills">	
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="https://img.icons8.com/ultraviolet/25/000000/add-user-group-man-man.png"></a>
+		    <div class="dropdown-menu">
+		    	<span id="drop_down_menu_request">Friend Requests</span>
+		    	<table>	    
+					<tr th:each="friendRequest : ${friendRequests}">
+						<td th:text="${friendRequest.getSender().name}+' '+${friendRequest.getSender().lastName+' '}"></td>
+						<td>
+							<a th:href="@{/accept_friend_request(friendRequestId=${friendRequest.id})}" class="btn btn-success btn-sm">Accept</a>
+							<a th:href="@{/discard_friend_request(friendRequestId=${friendRequest.id})}" class="btn btn-danger btn-sm">Discard</a>
+						</td>
+					</tr>
+				</table>
+		    </div>
+		  </li>
+		</ul>
+		<ul class="nav nav-pills">	
+		  <li class="nav-item dropdown">
+		    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="https://img.icons8.com/ultraviolet/25/000000/appointment-reminders.png"></a>
+		    <div class="dropdown-menu">
+		    	<span id="drop_down_menu_request">Group Requests</span>
+		    	<table>	    
+					<tr th:each="groupRequest : ${groupRequests}">
+						<td th:text="${groupRequest.getGroup().name}"></td>
+						<td>
+							<a th:href="@{/accept_invitation(invitationId=${groupRequest.id})}" class="btn btn-success btn-sm">Accept</a>
+							<a th:href="@{/home}" class="btn btn-danger btn-sm">Discard</a>
+						</td>
+					</tr>
+				</table>
+				<span id="drop_down_menu_request">Trainer Requests</span>
+		    	<table>	    
+					<tr th:each="trainerRequest : ${user.getTrainerRequests()}" th:id="'row' + ${trainerRequest.getId()}">
+						<td th:text="${trainerRequest.getTrainer().name} + ' ' + ${trainerRequest.getTrainer().lastName}"></td>
+						<td>
+							<button id="acceptTrainerRequest" class="btn btn-success btn-sm" th:data-request=${trainerRequest.getId()}>Accept</button>
+							<button id="discardTrainerRequest" class="btn btn-danger btn-sm" th:data-request="${trainerRequest.getId()}">Discard</button>
+						</td>
+					</tr>
+				</table>
+		    </div>
+		  </li>
+		</ul>
+		
+		<form class="form-inline my-2 my-lg-0" th:action="@{/find_user}">
+	        <input class="form-control mr-sm-2" type="search" placeholder="Search" name="nameAndLastName" id="nameAndLastName">
+	        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+    	</form>
+    	<form th:action="@{/logout}" method="POST">
+			<input type="submit" class="btn btn-danger" value="Logout"/>
+		</form>
+	</nav>
+	</div>
+	<div id="container">
+	
+		<div id="left_nav">
+			<div id="user_informations">
+				<div id="profile_photo"><img th:src="${user.getPhoto()}" class="img-responsive center-block" id="userPhoto"/></div>
+				<div id="name_and_surname" th:data-userId=${user.getId()}>
+					<span th:text="${user.getName()}" class="user_name_and_surname"></span>
+					<br>
+					<span th:text="${user.getLastName()}" class="user_name_and_surname"></span>
+				 </div>
+				 <div id="account_statistic">
+					 <div class="stats_left">
+					 	<img src="https://img.icons8.com/bubbles/25/000000/groups.png"><span th:text="' '+${user.getFriends().size()}"></span>
+					 </div>
+					 <div class="stats_right">
+					 	<img src="https://img.icons8.com/bubbles/25/000000/trust.png">0
+					 </div>
+					 <div class="stats_left">
+					 	<img src="https://img.icons8.com/color/25/000000/christmas-star.png">0
+					 </div>
+					 <div class="stats_right">
+					 	<img src="https://img.icons8.com/clouds/25/000000/darts.png"/><span th:text="' '+${user.getCompletedTargets().size()}"></span>
+					 </div>
+				 </div>
+			</div>
+			<a th:href=@{/show_group_form} type="button" class="btn btn-dark" id="create_group_menu">Create Group</a> 
+			<div id="groups">
+				<span id="header">Groups</span>
+				<ul id="group_list" th:each="group : ${groups}">
+				  <li><img src="https://img.icons8.com/ultraviolet/20/000000/groups.png"><a th:text="' '+${group.getName()}" th:href=@{/show_group_page(groupId=${group.id})}></a></li>
+				</ul>
+			</div> 
+		</div>
+	</div>
+	<div id="content">
+	
+		<div class="posts">
+			<ul id="postList">
+				<li th:each="post : ${user.getAllPosts()}" class="postElements">
+					<div class="post">
+						<div class="post_user_info">
+							<div class="post_owner_photo"><img th:src="${post.getOwner().getPhoto()}" class="img-responsive center-block" id="postUserPhoto"/></div>
+							<div class="post_owner_name_lastname">
+								<div th:if="${!user.equals(post.getOwner())}">
+									<a th:text="${post.getOwner().name}+' '+${post.getOwner().lastName}" class="name_lastname_span" th:href=@{/friend(userId=${post.getOwner().id})}></a><br>
+								</div>
+								<div th:if="${user.equals(post.getOwner())}">
+									<a th:text="${post.getOwner().name}+' '+${post.getOwner().lastName}" class="name_lastname_span" th:href="@{/showMyProfile}"></a><br>
+								</div>
+								<span th:text="${post.justifyDate()}" class="postDate"></span>
+							</div>
+						</div>
+						<div class="post_frame">
+							<span th:text="${post.getContent()}" class="post_content"></span>
+						</div>
+						<div class="likes">
+							<a th:data-post=${post.getId()} th:data-group="${post.getGroupIdOfPost(user)}" th:data-user=${user.getId()} id="heart_href"><img id="heart" th:class="${post.getLikes().contains(user) ? 'heart' : 'heart_white'}"></a><span th:text="${' '+post.getLikes().size()}" id="number_of_likes"></span>
+							<a  data-toggle="collapse" th:href="'#demo-' + ${post.getId()}" role="button" aria-expanded="false" th:aria-controls="'demo-' + ${post.getId()}">
+							    <img src="https://img.icons8.com/office/25/000000/comments.png"><span id="numberOfComments" th:text="${' '+post.getComments().size()}"></span>
+							</a>
+							<div class="collapse" th:id="'demo-' + ${post.getId()}">
+							    <div class="comments">
+							    	<div>
+								    	<textarea class="new_comment" th:id="'new_comment-' + ${post.getId()}" rows="3"></textarea><br>
+								    	<button type="button" class="btn btn-success new_comment_button" th:data-post=${post.getId()}>Add comment</button><br>
+								    	<ul class="commentList">
+								    		<li th:each="comment : ${post.sortByDate(post.getComments())}" class="commentElements">
+								    			<div class="comment">
+								    				<div class="post_user_info">
+														<div class="comment_owner_photo"><img th:src="${comment.getOwner().getPhoto()}" class="img-responsive center-block" id="postUserPhoto"/></div>
+														<div class="comment_owner_name_lastname">
+															<a th:text="${comment.getOwner().name}+' '+${comment.getOwner().lastName}" class="name_lastname_span" th:href=@{/friend(userId=${comment.getOwner().id})}></a><br>
+															<span th:text="${comment.justifyDate()}" class="postDate"></span>
+														</div>
+													</div>
+													<div class="comment_frame">
+														<span th:text="${comment.getContent()}" class="comment_content"></span>
+													</div>
+								    			</div>
+								    		</li>
+								    	</ul>
+							    	</div>
+								</div>
+							</div>	
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>	
+	
+		<div id="friend_list">
+			<table class="table table-borderless table-hover table-dark">
+					<tbody>
+						<tr th:each="theUser : ${friends}">
+							<td th:text="${theUser.name}+' '+${theUser.lastName}"/>
+							<td>
+								<a th:href=@{/show_message_page(userId=${theUser.id})} class="btn btn-success btn-sm">Reply</a>
+							</td>
+						</tr>
+					</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	
+	<script th:src="@{/jq/jquery-3.4.1.js}"></script>
+	<script th:src="@{/js/home.js}"></script>
+</body>
+
+</html>

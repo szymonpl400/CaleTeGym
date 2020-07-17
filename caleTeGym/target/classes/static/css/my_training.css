@@ -1,0 +1,194 @@
+body{
+	background-color: #202020;
+}
+#container
+{
+	background-color: #232322;
+    position: relative;
+    left: 12%;
+    top: 6%;
+    width: 85%;
+    height: 1000px;
+} 
+ul 
+{
+	list-style-type: none;
+}
+.dropdown-menu
+{
+	background-color: #202020; color: white; width:270px;
+}
+nav-link dropdown-toggle
+{
+	color: white;
+}
+.nav-pills .show>.nav-link 
+{
+	background-color: #343a40;
+}
+.dropdown-toggle::after 
+{
+	display:none;
+}
+#left_side_menu{
+    background-color: #232322;
+    position: absolute;
+    left: 1%;
+    top: 24%;
+    width: 210px;
+    height: 400px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.list-group-item{
+	color: white; background-color: #222425; position: relative;
+}
+#content{
+	background-color: #202020; color: white;
+}	
+.form-group{
+	width: 200px; position: relative; left: 25%;
+}
+#userInfoText{
+	position: relative; left:18%; color:white;
+}
+.btn-block{
+	position: relative;
+    display: table-row-group;
+    width: 70%;
+    left: 16%;
+    margin-top: 10%;
+}
+.hide{
+	display:none;
+}
+
+#training_container{
+	position: relative;
+    width: 100%;
+    height: 89%;
+	background-color: #232322;
+    left: 0%;
+    top: 5%;
+    content: "";
+  	display: table;
+  	clear: both;
+}
+.column {
+	float: left;
+    width: 20%;
+    padding: 10px;
+    height: 100%;
+    background-color: #202020;
+    border: 2px groove #262626;
+    text-align: center;
+}
+.products{
+	position: relative;
+    width: 100%;
+    height: 25%;
+    border: 2px groove #262626;
+    margin-bottom: 3%;
+}	
+.products_image{
+	position: relative;
+    width: 40%;
+    height: 70%;
+    float: left;
+    border: 2px groove #262626;
+}
+.products_details{
+	position: relative;
+    width: 60%;
+    height: 100%;
+    float: left;
+    font-size: 16px;
+    text-align: left;
+    padding-left: 4%;
+	
+}
+.products_image img {
+    max-width: 100%;
+    height: auto;
+}
+#training_list{
+	width: 100%;
+	position: relative;
+    margin-top: 1%;
+}
+.exercise{
+	position: relative;
+    width: 98%;
+    height: 40%;
+    background-color: #202020;
+    border: 2px groove #262626;
+    margin-top: 1%;
+    margin-left: 1%;
+    color: white;
+    max-height: 356px;
+}
+.exerciseName{
+	position: relative;
+    width: 30%;
+    height: 6%;
+    background-color: #202020;
+    margin-top: 1%;
+    margin-left: 2%;
+    float: left;
+    text-align: center;
+    font-size: 20px;
+}
+.exerciseNote{	
+	position: relative;
+    width: 30%;
+    height: 73%;
+    background-color: #232322;
+    border: 2px groove #262626;
+    margin-top: 3%;
+    margin-left: 2%;
+    white-space: pre-line;
+    max-height: 256px;
+}
+.seriesContainer{
+	position: relative;
+    width: 62%;
+    height: 89%;
+    background-color: #232322;
+    border: 2px groove #262626;
+    bottom: 87%;
+    margin-right: 2%;
+	margin-top: 1%;
+    float: right;
+    overflow-y: auto;
+    max-height: 313px;
+}
+.series{
+	position: relative;
+    width: 98%;
+    height: 13%;
+    background-color: #202020;
+    border: 2px groove #262626;
+    margin-left: 1%;
+    margin-top: 1%;
+}
+
+::-webkit-scrollbar { width: 8px; height: 3px;}
+::-webkit-scrollbar-track {  background-color: #646464;}
+::-webkit-scrollbar-track-piece { background-color: #000;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px;}
+::-webkit-scrollbar-corner { background-color: #646464;}}
+::-webkit-resizer { background-color: #666;}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		

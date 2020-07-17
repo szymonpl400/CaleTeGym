@@ -1,0 +1,126 @@
+body{
+	background-color: #202020;
+}
+#container
+{
+	background-color: #232322;
+    position: relative;
+    left: 12%;
+    top: 6%;
+    width: 85%;
+    height: 1000px;
+} 
+ul 
+{
+	list-style-type: none;
+}
+.dropdown-menu
+{
+	background-color: #202020; color: white; width:270px;
+}
+nav-link dropdown-toggle
+{
+	color: white;
+}
+.nav-pills .show>.nav-link 
+{
+	background-color: #343a40;
+}
+.dropdown-toggle::after 
+{
+	display:none;
+}
+#left_side_menu{
+    background-color: #232322;
+    position: absolute;
+    left: 1%;
+    top: 24%;
+    width: 210px;
+    height: 400px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.list-group-item{
+	color: white; background-color: #222425; position: relative;
+}
+#content{
+	background-color: #202020; color: white;
+}	
+.form-group{
+	width: 200px; position: relative; left: 25%;
+}
+#userInfoText{
+	position: relative; left:18%; color:white;
+}
+.btn-block{
+	position: relative;
+    display: table-row-group;
+    width: 70%;
+    left: 16%;
+    margin-top: 10%;
+}
+.hide{
+	display:none;
+}
+
+#diet{
+	position: relative;
+    width: 100%;
+    height: 89%;
+    left: 0%;
+    top: 5%;
+    content: "";
+  	display: table;
+  	clear: both;
+}
+.column {
+	float: left;
+    width: 20%;
+    padding: 10px;
+    height: 100%;
+    background-color: #202020;
+    border: 2px groove #262626;
+    text-align: center;
+}
+.products{
+	position: relative;
+    width: 100%;
+    height: 25%;
+    border: 2px groove #262626;
+    margin-bottom: 3%;
+}	
+.products_image{
+	position: relative;
+    width: 40%;
+    height: 70%;
+    float: left;
+    border: 2px groove #262626;
+}
+.products_details{
+	position: relative;
+    width: 60%;
+    height: 100%;
+    float: left;
+    font-size: 16px;
+    text-align: left;
+    padding-left: 4%;
+	
+}
+.products_image img {
+    max-width: 100%;
+    height: auto;
+}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		

@@ -1,0 +1,72 @@
+body 
+{
+	background-color: #202020; color: white;
+}  	
+#container
+{
+	background-color: #202020; position: relative; left: 30%; width: 1200px; height: 1000px;
+} 
+#image
+{
+	background-color: #262626; position: absolute; width: 170px; height: 170px; left: 5%; top:5%; border-radius: 0%; border:2px groove #262626;
+}
+#nameAndSurname
+{
+	/*background-color: yellow;*/ position: absolute; width: 300px; height: 40px; left: 20%; top:18%; font-size: 27px; font-family: Calibri;
+}
+#topic_span
+{
+	position: absolute; left: 5%; top:2%; font-size: 20px; font-family: Calibri; resize: horizontal;
+}
+#content_span
+{
+	position: absolute; left: 3%; top:25%; width: 90%; font-size: 15px; font-family: Calibri; resize: horizontal;  word-wrap:break-word;
+}
+
+#current_Message
+{
+	position: absolute; width: 600px; height:200px; left: 5%; top:30%; resize: horizontal;
+}
+textarea
+{
+	background-color: #262626; border:2px groove #262626; word-wrap:break-word; font-size: 15px; font-family: Calibri; color: white;
+}
+
+#topic
+{
+	resize: none;
+}
+
+#content
+{
+
+}
+button
+{
+	float: right;
+}
+ul 
+{
+	list-style-type: none;
+}
+.dropdown-menu
+{
+	background-color: #202020; color: white; width:270px;
+}
+nav-link dropdown-toggle
+{
+	color: white;
+}
+.nav-pills .show>.nav-link 
+{
+	background-color: #343a40;
+}
+.dropdown-toggle::after 
+{
+	display:none;
+}
+.postUserPhoto
+{
+	max-width: 100%;
+    height: auto;
+}

@@ -1,0 +1,342 @@
+body{
+	background-color: #202020;
+}
+#content{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+#container
+{
+	background-color: #232322;
+    position: relative;
+    right: 24%;
+    top: 0%;
+    width: 1200px;
+    height: 1100px;
+    color: white;
+    float: right;
+} 
+ul 
+{
+	list-style-type: none;
+}
+.dropdown-menu
+{
+	background-color: #202020; color: white; width:270px;
+}
+nav-link dropdown-toggle
+{
+	color: white;
+}
+.nav-pills .show>.nav-link 
+{
+	background-color: #343a40;
+}
+.dropdown-toggle::after 
+{
+	display:none;
+}
+#right_side_menu{
+	background-color: #232322;
+    position: absolute;
+    left: 73%;
+    top: 11%;
+    width: 450px;
+    height: 500px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.list-group-item{
+	color: white; background-color: #222425; position: relative;
+}
+#date{
+	position: relative;
+    top: 12%;
+    left: 8%;
+    width: 35%;
+}
+#choose_user{
+	position: relative;
+    left: 56%;
+    top: 5%;
+    width: 25%;
+}
+.pupil_list{
+	width: 100%;
+	position:relative;
+}
+.body_list{
+	left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+#date_text{
+    top: 12%;
+    left: 8%;
+    position: relative;
+    color: white;
+    width: 20%;
+}
+#user_photo{
+	position: relative; width: 170px; height: 170px; left: 7%; top:4%; border: 2px groove #262626; background-color: #262626;
+}
+#pupil_name{
+	color: white;
+    width: 41%;
+    top: -9%;
+    left: 55%;
+    position: relative;
+    font-size: 22px;
+}
+#user_info{
+	color: white;
+    position: relative;
+    left: 9%;
+    top: 5%;
+    font-size: 23px;
+}
+.hide{
+	display: none;
+}
+#excercise_list{
+	position: relative;
+    width: 72%;
+    background-color: #222425;
+    color: white;
+    left: 0%;
+    top: 5%;
+    border-color: black;
+}
+#series_list{
+	position: relative;
+    width: 29%;
+    background-color: #222425;
+    color: white;
+    left: 0%;
+    top: 15%;
+    border-color: black;
+}
+.reps_list{
+	position: relative;
+	float: left;
+    width: 29%;
+    background-color: #222425;
+    color: white;
+    left: 0%;
+    top: 19%;
+    border-color: black;
+}
+#training_details{
+	left: 10%;
+    position: relative;
+    width: 50%;
+    height: 20%;
+    float: left;
+    top: 5%;
+}
+#series_text{
+	position: relative;
+    left: 0%;
+    top: 11%;
+    width: 9%;
+    height: 12%;
+}
+.reps_text{
+	position: relative;
+	float: left;
+    left: 20%;
+    top: 2%;
+    width: 13%;
+    height: 11%;
+    color: white;
+}
+#series_details{
+	top: 6%;
+    position: relative;
+    right: 9%;
+    width: 85%;
+    height: 74%;
+    float: right;
+    background-color: #232322;
+}
+.series_info{
+	position: relative;
+    left: 4%;
+    top: 2%;
+    width: 30%;
+    height: 23%;
+    background-color: #202020;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    display: inline-block;
+    overflow-y: auto;
+    border: 2px groove #262626;
+}
+select option{
+	background-color: #222425 !important;
+	color: white;
+}
+select:active, select:selected{
+	background-color: #222425 !important;
+	color: white;
+}
+.weight{
+	position: relative;
+    float: right;
+    right: 20%;
+    top: 2%;
+}
+.form-group{
+	margin-bottom: 1rem;
+    position: relative;
+    float: right;
+    width: 45%;
+    top: 7%;
+    right: 6%;
+}
+.weights, .weights:hover, .weights:visited, .weights:active{
+	background-color: #222425;
+	color: white;
+	border-color: black;
+}
+.times, .times:hover, .times:visited, .times:active{
+	background-color: #222425;
+	color: white;
+	border-color: black;
+}
+#note{
+	position: relative;
+    width: 20%;
+    height: 40%;
+    float: right;
+    left: 61%;
+    top: 3%;
+
+}
+#note_span{
+	text-align: center;
+    position: relative;
+    left: 44%;
+    font-size: 21px;
+    color: white;
+}
+#note_text{
+	position: relative;
+    width: 100%;
+    background-color: #262626;
+    border: 2px groove #262626;
+    color: white;
+    overflow: auto;
+    border-radius: 2%;
+    margin-top: 2%;
+}
+#div_with_actions{
+	position: relative;
+    float: right;
+    width: 21%;
+    height: 5%;
+    right: 12%;
+    top: 15%;
+}
+#left_side_menu{
+	position: relative;
+    width: 11%;
+    height: 87%;
+    left: 2%;
+    top: 0%;
+    float: left;
+    margin-top: 0px;
+}
+.actions{
+	margin-bottom: 5%;
+	width: 100%;
+}
+#added_exercises_div{
+	position: relative;
+    width: 100%;
+    height: 70%;
+    left: 0%;
+    top: 1%;
+    background-color: #262626;
+    border: 2px groove #262626;
+    overflow-y: auto;
+	scrollbar-face-color: #646464;
+	scrollbar-base-color: #646464;
+	scrollbar-3dlight-color: #646464;
+	scrollbar-highlight-color: #646464;
+	scrollbar-track-color: #000;
+	scrollbar-arrow-color: #000;
+	scrollbar-shadow-color: #646464;
+	scrollbar-dark-shadow-color: #646464;
+}
+
+::-webkit-scrollbar { width: 8px; height: 3px;}
+::-webkit-scrollbar-track {  background-color: #646464;}
+::-webkit-scrollbar-track-piece { background-color: #000;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px;}
+::-webkit-scrollbar-corner { background-color: #646464;}}
+::-webkit-resizer { background-color: #666;}
+
+#added_exercises_span{
+	left: 27%;
+    top: 56%;
+    text-align: center;
+    position: relative;
+    font-size: 21px;
+    color: white;
+    margin-top: 20%;
+
+}
+.time_text{
+	position: relative;
+    float: left;
+    top: 20%;
+    left: 20%;
+    width: 13%;
+    height: 10%;
+}
+.time_div{
+	margin-bottom: 1rem;
+    position: relative;
+    float: right;
+    width: 36%;
+    top: 20%;
+    right: 10%;
+}
+.added_exercise{
+    position: relative;
+    margin-top: 1%;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    width: 98%;
+    height: 15%;
+    border: 2px groove #262626;
+    background-color: #202020;
+}
+.exercise_name{
+	position: relative;
+    top: 25%;
+    left: 2%;
+    color: white;
+    font-size: 15px;
+}
+#added_exercises_box{
+	left: 78%;
+    top: 47%;
+    position: absolute;
+    width: 20%;
+    height: 69%;
+}
+#save_training{
+    margin-top: 4%;
+}
+
+
+
+
+
+
+
